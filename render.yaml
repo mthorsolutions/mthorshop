@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: n8n
+    plan: free
+    runtime: image
+    image:
+      url: docker.io/n8nio/n8n:1.90.2
+    envVars:
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: true
+      - key: N8N_BASIC_AUTH_USER
+        value: ton-utilisateur
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: ton-mot-de-passe
+      # Ajoute ici d'autres variables si besoin (DB, encryption, etc.)
