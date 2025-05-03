@@ -1,15 +1,32 @@
+# Exported from Render on 2025-05-03T14:15:00Z
 services:
-  - type: web
-    name: n8n
-    plan: free
-    runtime: image
-    image:
-      url: docker.io/n8nio/n8n:1.90.2
-    envVars:
-      - key: N8N_BASIC_AUTH_ACTIVE
-        value: true
-      - key: N8N_BASIC_AUTH_USER
-        value: ton-utilisateur
-      - key: N8N_BASIC_AUTH_PASSWORD
-        value: ton-mot-de-passe
-      # Ajoute ici d'autres variables si besoin (DB, encryption, etc.)
+- type: web
+  name: mthorshop / MAJ API 3
+  runtime: node
+  repo: https://github.com/mthorsolutions/mthorshop
+  plan: standard
+  envVars:
+  - key: N8N_PORT
+    sync: false
+  - key: WEBHOOK_URL
+    sync: false
+  - key: WEBHOOK_TUNNEL_URL
+    sync: false
+  - key: N8N_USER_FOLDER
+    sync: false
+  - key: N8N_PROTOCOL
+    sync: false
+  - key: N8N_HOST
+    sync: false
+  - key: N8N_EDITOR_BASE_URL
+    sync: false
+  - key: NODE_VERSION
+    sync: false
+  region: frankfurt
+  buildCommand: pnpm install --frozen-lockfile; pnpm run build
+  startCommand: pnpm run start
+  disk:
+    name: disk
+    mountPath: /mnt/mydisk/n8nData/.n8n
+    sizeGB: 10
+version: "1"
